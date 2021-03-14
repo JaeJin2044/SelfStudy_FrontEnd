@@ -4,8 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        .wrap{
+            width: 500px;
+            height: 500px;
+            background-color: greenyellow;
+            position: relative;
+        }
+        .container{
+            width: 400px;
+            background-color: royalblue;
+            height: 300px;
+        }
+        .container .item{
+            border: 4px dashed red;
+        }
+        .container .item:nth-child(1){
+            background-color: salmon;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 300px;
+            bottom: 10px;
+        }
+        .container .item:nth-child(2){
+            background-color: yellow;
+            width: 140px;
+            height: 70px;
+            position: fixed;
+            top:100px;
+            left: 300px;
+            z-index: 2;
+        }
+        .container .item:nth-child(3){
+            background-color: green;
+            width: 70px;
+            height: 200px;
+            position: absolute;
+            z-index: 2;
+            top: 100px;
+           right: 10px;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
+    <!-- position :fixed viewport를 기준으로 고정되어 있다.
+        z-index: 기본적으로 0 으로 설정되어 있다.
+        요소 쌓임 순서를 결정하는 속성 
+        position 값이 없다면 ... z-index가 더 크더라도
+        적용이 안된다..  만약 같은 선상에서 z-index로 요소 쌓임
+        순서를 적용 할려면.. position 값을 설정 한 후에 해야함. 
+        
+        z-index: 기본값은 auto 이다. 
+        -1이라는 음수도 사용 가능하다.(일반적인 요소보다 더 뒤에 쌓고 싶을떄 사용)
     
+        position 의 속성의 값으로 absolute,fixed가 지정 되면
+        display 속성이 block속성으로 변경된다.
+    -->
+        <div class="wrap">
+            <div class="container">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+            </div>
+        </div>
 </body>
 </html>
