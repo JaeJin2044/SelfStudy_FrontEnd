@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        bdoy{
+            padding: 100px;
+        }
+        .container{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+
+        }
+        .container .item{
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+            /* transform: translate(100px,100px) scale(1.5) rotate(45deg); */
+            /* 원근법 함수는 제일 앞에 작성해야한다. */
+            transform: perspective(500px) rotateY(45deg) skewX(-15deg) translate(100px)
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--2D변환 함수 , 3D변환함수 두 가지 케이스가 있다.  -->
+
+    <!-- 
+        # 2D변환 함수 
+            (px단위)
+        - translate(x,y) - 이동(x,y축)
+        - scale(x.y) - 크기 (x축,y축)
+            (deg단위)
+        - roatae(degree) - 회전        
+        - skewX(x) - 기울임(x축)
+        - skewY(y) - 기울임(y축)
+
+        # 3D변환 함수 
+        
+        - perspective(n) -  원근법(거리)
+        - rotatxX(x) - 회전x 축
+
+    -->
+        <div class="container">
+            <div class="item"></div>
+        </div>
+
+    
+</body>
+</html>
