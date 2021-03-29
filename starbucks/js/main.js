@@ -86,3 +86,23 @@ new Swiper('.promotion .swiper-container',{
      }
 });
 
+
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromotion = false;
+
+promotionToggleBtn.addEventListener('click',function(){
+  // true라면 false 전환 , false라면 true 전환 
+  isHidePromotion = !isHidePromotion;
+
+  if(isHidePromotion){
+    //숨김 처리!!
+    promotionEl.classList.add('hide');
+  }else{
+    //보임 처리!!
+    promotionEl.classList.remove('hide');
+  }
+})
+
+
+
