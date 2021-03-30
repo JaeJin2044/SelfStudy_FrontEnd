@@ -22,7 +22,7 @@ searchInputEl.addEventListener('blur',function(){
 //===============Badge관련===========
 
 const badgeEl = document.querySelector('header .badges');
-
+const toTopEl = document.querySelector('#to-top');
 // 스크롤 할때마다 익명의 함수를 실행 하겠다.
 // lodash에서 제공하는 기능 _.throttle
 // _.throttle(함수,몇초에 한번 실행? 시간적어줌)
@@ -36,15 +36,35 @@ window.addEventListener('scroll', _.throttle(function(){
       opacity : 0,
       display: 'none'
     });
+
+    //버튼 보이기 !!!
+    gsap.to(toTopEl,.2,{
+      x : 0
+    })
+
   }else{
     //배지 보이기
     gsap.to(badgeEl, 0.6, {
       opacity : 1,
       display :'block'
     });
-  
+
+    //버튼 숨기기
+    gsap.to(toTopEl,.2,{
+      x : 100
+    })
   }
+  
 },300));
+//_.throttle(함수,시간)
+
+
+toTopEl.addEventListener('click',function(){
+  gsap.to(window,.7,{
+    scrollTo : 0  //화면 의 위치를  0px로 옮겨주겠다... 0.7초 동안
+  })
+})
+
 //여기까지하면 너무 부자연스러워서 자바스크립트 animation 도입
 // gsap라이브러리
 
@@ -67,8 +87,9 @@ new Swiper('.notice-line .swiper-container',{
   loop: true
 });
 
+    // 선택자 ,  객체 데이터 
 new Swiper('.promotion .swiper-container',{
-  // display:'horizontal' 기본값임
+    // display:'horizontal' 기본값임
      slidesPerView : 3, //한번에 보여줄 슬라이드 개수 
      spaceBetween : 10, //슬라이드 사이 여백 
      centeredSlides : true, // 1번 슬라이드가 가운데 보이기
@@ -85,6 +106,20 @@ new Swiper('.promotion .swiper-container',{
        nextEl : '.promotion .swiper-next'
      }
 });
+
+// AWARDS 부분 
+new Swiper('.awards .swiper-container',{
+  autoplay:true,  
+  loop:true,
+  spaceBetween: 30 ,
+  slidesPerView :  5 ,  //하나의 화면에 몇개의 슬라이드를 보여 줄것인가?
+  navigation : {
+    prevEl: '.awards .swiper-prev',
+    nextEl: '.awards .swiper-next'
+  }
+});
+
+
 
 
 const promotionEl = document.querySelector('.promotion');
@@ -134,4 +169,21 @@ floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
 
 
+// 스크롤 매직
+const spyEls = document.querySelectorAll('section.scroll-spy');
 
+spyEls.forEach(function(spyEl){
+  new ScrollMagic
+    .Scene({
+      triggerElement : spyEl,  //보여짐 여부를 감시할 요소를 지정
+      triggerHook : .8
+    })
+    .setClassToggle(spyEl,'show')
+    .addTo(new ScrollMagic.Controller());
+});
+
+
+
+// footer 년도
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
